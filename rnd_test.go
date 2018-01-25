@@ -14,3 +14,6 @@ func TestHexas(t *testing.T) {
 func TestAlfa(t *testing.T) {
 	fmt.Println(Alfa(19))
 }
+
+//https://til.hashrocket.com/posts/355f31f19c-seeding-golangs-rand
+//https://stackoverflow.com/questions/12321133/golang-random-number-generator-how-to-seed-properly
