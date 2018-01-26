@@ -64,6 +64,8 @@ func (g *GeradorNomes) Nome(maxN, maxSn int) string {
 	}
 }
 
+// Constrói um gerador de nomes com slices de nomes masculinos, femininos e sobrenomes.
+// Remove espaços adicionais.
 func NewGeradorNomes(m, f, s []string) (*GeradorNomes, error) {
 	if m == nil || f == nil || s == nil {
 		return nil, errors.New("gerador de nomes: as três slices precisam estar inicializadas")
@@ -71,6 +73,9 @@ func NewGeradorNomes(m, f, s []string) (*GeradorNomes, error) {
 	return &GeradorNomes{limpaEspacosNomes(m), limpaEspacosNomes(f), limpaEspacosNomes(s)}, nil
 }
 
+// Constrói um gerador de nomes com arquivos de nomes masculinos, femininos e sobrenomes.
+// Os arquivos devem conter um nome por linha. As linhas devem ser quebradas com "\n".
+// Remove espaços adicionais.
 func NewGeradorNomesFiles(m, f, s string) (*GeradorNomes, error) {
 	bytes, err := ioutil.ReadFile(m)
 	if err != nil {
