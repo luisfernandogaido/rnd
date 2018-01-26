@@ -7,6 +7,7 @@ import (
 	"strings"
 )
 
+//Armazena slices de nomes masculinos, femininos e sobrenomes para gerar combinações de nomes.
 type GeradorNomes struct {
 	masculinos, femininos, sobrenomes []string
 }
