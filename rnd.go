@@ -1,11 +1,11 @@
 package rnd
 
 import (
-	"math/rand"
-	"time"
-	"strings"
-	"strconv"
 	"fmt"
+	"math/rand"
+	"strconv"
+	"strings"
+	"time"
 )
 
 const alfabeto = "abcdefghijklmnopqrstuvwxyz"
@@ -40,7 +40,7 @@ func Alfa(tam int) string {
 	var ret string
 	for i := 0; i < tam; i++ {
 		p := rand.Intn(tamAlfabeto)
-		ret += alfabeto[p:p+1]
+		ret += alfabeto[p : p+1]
 	}
 	return ret
 }
