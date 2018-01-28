@@ -15,8 +15,8 @@ func TestAlfa(t *testing.T) {
 	fmt.Println(Alfa(19))
 }
 
-func Test(t *testing.T) {
-
+func TestCidadeEstado(t *testing.T) {
+	fmt.Println(CidadeEstado())
 }
 
 //https://til.hashrocket.com/posts/355f31f19c-seeding-golangs-rand
