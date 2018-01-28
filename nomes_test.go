@@ -30,11 +30,3 @@ func TestBairro(t *testing.T) {
 func TestEmail(t *testing.T) {
 	fmt.Println(Email(gn.Nome(2, 2)))
 }
-
-func TestCpf(t *testing.T) {
-	fmt.Println(Cpf())
-}
-
-func TestCep(t *testing.T) {
-	fmt.Println(Cep())
-}

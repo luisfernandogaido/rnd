@@ -99,12 +99,71 @@ func Email(nome string) string {
 	return replacer.Replace(email)
 }
 
-func Cpf() string {
-	return digitos(3) + "." + digitos(3) + "." + digitos(3) + "-" + digitos(2)
+// Gera um CPF. Com f true, formata.
+func Cpf(f bool) string {
+	if f {
+		return digitos(3) + "." + digitos(3) + "." + digitos(3) + "-" + digitos(2)
+	}
+	return digitos(11)
 }
 
-func Cep() string {
-	return digitos(5) + "-" + digitos(3)
+// Gera um CEP. Com f true, formata.
+func Cep(f bool) string {
+	if f {
+		return digitos(5) + "-" + digitos(3)
+	}
+	return digitos(8)
+}
+
+//Gera uma data de nascimento para alguém que tem atualmente entre 18 e 70 anos, aproximadamente.
+// Com f true, formata.
+func Nascimento(f bool) string {
+	hoje := time.Now()
+	nascimento := hoje.Add(-time.Hour * time.Duration(157680+rand.Intn(455520)))
+	if f {
+		return nascimento.Format("02/01/2006")
+	}
+	return nascimento.Format("2006-01-02")
+}
+
+//Gera um RG. Com f true, formata
+func Rg(f bool) string {
+	if f {
+		return digitos(2) + "." + digitos(3) + "." + digitos(3) + "-" + digitos(1)
+	}
+	return digitos(9)
+}
+
+//Gera um telefone. Com f true, formata.
+func Telefone(f bool) string {
+	if f {
+		return fmt.Sprintf("(%v)%v-%v", digitos(2), digitos(4), digitos(4))
+	}
+	return digitos(11)
+}
+
+//Gera um CNPJ. Com f true, formata.
+func Cnpj(f bool) string {
+	if f {
+		return fmt.Sprintf("%v.%v.%v/%v-%v", digitos(2), digitos(3), digitos(3), digitos(4), digitos(2))
+	}
+	return digitos(11)
+}
+
+// Dado um número, retorna um novo diferente em até, no máximo a taxa de desvio. n entre 0.0 e 1.0.
+// Se desv não estiver entre 0.0 e 1.0, 1.0 é assumido
+// Exemplos:
+// n = 1.0 e desv = 0.2 resulta entre 0.8 e 1.2
+// n = 1.0 e desv = 1.0 resulta entre 0.0 e 2.0
+func RealModificado(n float64, desv float64) float64 {
+	if desv < 0.0 || desv > 1 {
+		desv = 1.0
+	}
+	sinal := 1.0
+	if rand.Intn(2) == 1 {
+		sinal = -1.0
+	}
+	return n + sinal*n*desv*rand.Float64()
 }
 
 func sorteiaString(slice []string) string {
