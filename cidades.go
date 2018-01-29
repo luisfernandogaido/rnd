@@ -13,14 +13,14 @@ type cidade struct {
 	Nome, Estado, Uf string
 }
 
-type geradorCidades struct {
+type GeradorCidades struct {
 	Cidades []cidade
 }
 
 // Cria um gerador de cidades com base em arquivo CSV.
 // O arquivo deve conter em cada linha: <nome>\t<estado>\t<UF>\n.
 // Se uma linha não satisfizer esse conteúdo, um erro é gerado.
-func NewGeradorCidades(arq string) (*geradorCidades, error) {
+func NewGeradorCidades(arq string) (*GeradorCidades, error) {
 	cidades := make([]cidade, 0)
 	bytes, err := ioutil.ReadFile(arq)
 	if err != nil {
@@ -34,10 +34,10 @@ func NewGeradorCidades(arq string) (*geradorCidades, error) {
 		}
 		cidades = append(cidades, cidade{linha[0], linha[1], linha[2]})
 	}
-	return &geradorCidades{cidades}, nil
+	return &GeradorCidades{cidades}, nil
 }
 
-func (gc *geradorCidades) GeraNomeUf() string {
+func (gc *GeradorCidades) GeraNomeUf() string {
 	cidade := gc.Cidades[rand.Intn(len(gc.Cidades))]
 	return fmt.Sprintf("%v/%v", cidade.Nome, cidade.Uf)
 }

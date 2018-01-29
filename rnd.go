@@ -147,7 +147,7 @@ func Cnpj(f bool) string {
 	if f {
 		return fmt.Sprintf("%v.%v.%v/%v-%v", digitos(2), digitos(3), digitos(3), digitos(4), digitos(2))
 	}
-	return digitos(11)
+	return digitos(14)
 }
 
 // Dado um número, retorna um novo diferente em até, no máximo a taxa de desvio. n entre 0.0 e 1.0.
