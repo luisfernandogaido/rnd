@@ -2,6 +2,8 @@ package rnd
 
 import (
 	"fmt"
+	"io/ioutil"
+	"strings"
 	"testing"
 )
 
@@ -29,4 +31,15 @@ func TestBairro(t *testing.T) {
 
 func TestEmail(t *testing.T) {
 	fmt.Println(Email(gn.Nome(2, 2)))
+}
+
+func TestMaia(t *testing.T) {
+	nomes := make([]string, 0)
+	for i := 0; i < 1000000; i++ {
+		nomes = append(nomes, gn.Nome(2, 3))
+	}
+	err := ioutil.WriteFile("./um-milhao-nomes.txt", []byte(strings.Join(nomes, "\r\n")), 0644)
+	if err != nil {
+		t.Fatal(err)
+	}
 }
