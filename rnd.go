@@ -62,7 +62,7 @@ func NumeroEndereco() string {
 }
 
 func Bairro(gn *GeradorNomes) string {
-	return gn.Nome(1, 1, )
+	return gn.Nome(1, 1)
 }
 
 func Email(nome string) string {
