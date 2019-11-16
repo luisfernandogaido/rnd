@@ -19,6 +19,10 @@ func Digitos(n int) string {
 	return sb.String()
 }
 
-func Cpf() string {
+func CpfH() string {
 	return fmt.Sprintf("%v.%v.%v-%v", Digitos(3), Digitos(3), Digitos(3), Digitos(2))
+}
+
+func Cpf() string {
+	return strings.ReplaceAll(strings.ReplaceAll(CpfH(), ".", ""), "-", "")
 }

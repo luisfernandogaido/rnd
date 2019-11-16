@@ -7,6 +7,10 @@ import (
 
 func TestCpf(t *testing.T) {
 	for i := 0; i < 10; i++ {
+		fmt.Println(CpfH())
+	}
+	fmt.Println("---")
+	for i := 0; i < 10; i++ {
 		fmt.Println(Cpf())
 	}
 }
