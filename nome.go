@@ -3,7 +3,6 @@ package rnd
 import (
 	"encoding/csv"
 	"fmt"
-	"io/ioutil"
 	"math/rand"
 	"os"
 	"path/filepath"
@@ -31,7 +30,7 @@ func LoadNomes() error {
 		return fmt.Errorf("load nomes: %w", err)
 	}
 	defer f.Close()
-	r := csv.NewReader(f)
+	r := csv.NewReader(strings.NewReader(nomesCsv))
 	records, err := r.ReadAll()
 	if err != nil {
 		return fmt.Errorf("load nomes: %w", err)
@@ -43,8 +42,7 @@ func LoadNomes() error {
 		nomes[i].Nome = records[i][2]
 		nomes[i].Genero = records[i][1]
 	}
-	b, err := ioutil.ReadFile(filepath.Join(DataDir, "sobrenomes.txt"))
-	sobrenomes = strings.Split(string(b), "\r\n")
+	sobrenomes = strings.Split(sobrenomesCsv, "\n")
 	tamSobrenomes = len(sobrenomes)
 	return nil
 }
