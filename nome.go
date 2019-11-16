@@ -6,6 +6,7 @@ import (
 	"io/ioutil"
 	"math/rand"
 	"os"
+	"path/filepath"
 	"strings"
 )
 
@@ -25,7 +26,7 @@ func LoadNomes() error {
 	if nomes != nil {
 		return nil
 	}
-	f, err := os.Open("./dados/nomes.csv")
+	f, err := os.Open(filepath.Join(DataDir, "nomes.csv"))
 	if err != nil {
 		return fmt.Errorf("load nomes: %w", err)
 	}
@@ -42,7 +43,7 @@ func LoadNomes() error {
 		nomes[i].Nome = records[i][2]
 		nomes[i].Genero = records[i][1]
 	}
-	b, err := ioutil.ReadFile("./dados/sobrenomes.txt")
+	b, err := ioutil.ReadFile(filepath.Join(DataDir, "sobrenomes.txt"))
 	sobrenomes = strings.Split(string(b), "\r\n")
 	tamSobrenomes = len(sobrenomes)
 	return nil
