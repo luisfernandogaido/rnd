@@ -1,9 +1,10 @@
 package rnd
 
+import (
+	"math/rand"
+	"time"
+)
+
 func init() {
-
-}
-
-func Dobro(n int) int {
-	return 2 * n
+	rand.Seed(time.Now().UnixNano())
 }
