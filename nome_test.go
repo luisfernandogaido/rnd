@@ -6,14 +6,12 @@ import (
 )
 
 func TestLoadNomesTest(t *testing.T) {
-	DataDir = "./dados"
 	if err := LoadNomes(); err != nil {
 		t.Fatal(err)
 	}
 }
 
 func TestNome(t *testing.T) {
-	DataDir = "./dados"
 	if err := LoadNomes(); err != nil {
 		t.Fatal(err)
 	}

@@ -4,8 +4,6 @@ import (
 	"encoding/csv"
 	"fmt"
 	"math/rand"
-	"os"
-	"path/filepath"
 	"strings"
 )
 
@@ -25,11 +23,6 @@ func LoadNomes() error {
 	if nomes != nil {
 		return nil
 	}
-	f, err := os.Open(filepath.Join(DataDir, "nomes.csv"))
-	if err != nil {
-		return fmt.Errorf("load nomes: %w", err)
-	}
-	defer f.Close()
 	r := csv.NewReader(strings.NewReader(nomesCsv))
 	records, err := r.ReadAll()
 	if err != nil {
