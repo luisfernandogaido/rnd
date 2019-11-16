@@ -21,8 +21,9 @@ var (
 		".",
 		"-",
 		"_",
+		"",
 	}
-	tamSeparadores = 3
+	tamSeparadores = 4
 )
 
 func Email(nomeBase string) string {
