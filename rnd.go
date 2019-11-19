@@ -37,4 +37,22 @@ func init() {
 	b, err := ioutil.ReadFile(filepath.Join(os.Getenv("RND_DIR"), "sobrenomes.txt"))
 	sobrenomes = strings.Split(string(b), "\r\n")
 	tamSobrenomes = len(sobrenomes)
+
+	f2, err := os.Open(filepath.Join(os.Getenv("RND_DIR"), "cidades.csv"))
+	if err != nil {
+		panic(fmt.Errorf("load cidades: %w", err))
+	}
+	defer f2.Close()
+	r = csv.NewReader(f2)
+	r.Comma = '\t'
+	records, err = r.ReadAll()
+	if err != nil {
+		panic(fmt.Errorf("load cidades: %w", err))
+	}
+	tamCidade = len(records)
+	cidades = make([]cidade, tamCidade)
+	for i := range records {
+		cidades[i].nome = records[i][00]
+		cidades[i].uf = records[i][2]
+	}
 }

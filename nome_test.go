@@ -10,3 +10,9 @@ func TestNome(t *testing.T) {
 		fmt.Println(Nome())
 	}
 }
+
+func TestCidade(t *testing.T) {
+	for i := 0; i < 10; i++ {
+		fmt.Println(Cidade())
+	}
+}
