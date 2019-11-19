@@ -7,8 +7,9 @@ import (
 )
 
 var (
-	digitos = "01234546789"
-	letras  = "abcdefghijklmnopqrstuvwxyz"
+	digitos   = "01234546789"
+	letras    = "abcdefghijklmnopqrstuvwxyz"
+	reDigitos = strings.NewReplacer("-", "", ".", "", "/", "")
 )
 
 func Digitos(n int) string {
@@ -34,5 +35,13 @@ func CpfH() string {
 }
 
 func Cpf() string {
-	return strings.ReplaceAll(strings.ReplaceAll(CpfH(), ".", ""), "-", "")
+	return reDigitos.Replace(CpfH())
+}
+
+func CnpjH() string {
+	return fmt.Sprintf("%v.%v.%v/%v-%v", Digitos(2), Digitos(3), Digitos(3), Digitos(4), Digitos(2))
+}
+
+func Cnpj() string {
+	return reDigitos.Replace(CnpjH())
 }
