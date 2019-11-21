@@ -13,7 +13,15 @@ import (
 
 func init() {
 	rand.Seed(time.Now().UnixNano())
-	os.Setenv("RND_DIR", "C:\\GoPrograms\\rnd")
+	host, err := os.Hostname()
+	if err != nil {
+		panic(fmt.Errorf("rnd: %w", err))
+	}
+	if host == "NOTE-GAIDO" || host == "MSI75271154" {
+		os.Setenv("RND_DIR", "C:\\GoPrograms\\rnd")
+	} else {
+		os.Setenv("RND_DIR", "/var/www/html/rnd")
+	}
 	if os.Getenv("RND_DIR") == "" {
 		panic("rnd: RND_DIR não definida")
 	}
